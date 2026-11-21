@@ -1,0 +1,3916 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY KOST PUDEW — Hunian Nyaman & Sewa Kamar Online Smart Lock</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- QRCode CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #ccfbf1;
+            --primary-soft: #f0fdfa;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg-page: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(13, 148, 136, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 30px -10px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 20px 40px -15px rgba(13, 148, 136, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--primary), #14b8a6);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+        }
+
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: -2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .btn-admin {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        .btn-admin:hover {
+            background: #0f172a;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-disabled {
+            background: #e2e8f0 !important;
+            color: #94a3b8 !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: radial-gradient(circle at 10% 20%, rgba(204, 251, 241, 0.5) 0%, rgba(240, 253, 250, 0.3) 40%, #f8fafc 80%);
+            padding: 60px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--primary-light);
+            margin-bottom: 20px;
+        }
+
+        .hero-pill i {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--secondary);
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero h2 span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h2 span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 8px;
+            background: rgba(20, 184, 166, 0.2);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .hero-feature-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--secondary);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-feature-badge i {
+            color: var(--primary);
+        }
+
+        /* ===== FILTER & SEARCH BAR ===== */
+        .filter-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            max-width: 1000px;
+            margin: -25px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .select-filter {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            color: var(--text-main);
+            background-color: white;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .select-filter:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .filter-tags {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .tag-pill {
+            padding: 6px 14px;
+            background: #f1f5f9;
+            color: var(--text-muted);
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tag-pill:hover,
+        .tag-pill.active {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-color: var(--primary);
+        }
+
+        /* ===== CONTAINER & HEADINGS ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-title {
+            position: relative;
+        }
+
+        .section-title h3 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .rooms-count-badge {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            border: 1px solid var(--primary-light);
+        }
+
+        /* ===== ROOM CARDS GRID ===== */
+        .daftar-kamar {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+
+        .kartu-kamar {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .kartu-kamar:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(13, 148, 136, 0.3);
+        }
+
+        .kamar-gambar-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background: #cbd5e1;
+        }
+
+        .kamar-gambar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .kartu-kamar:hover .kamar-gambar {
+            transform: scale(1.06);
+        }
+
+        .badge-status {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .badge-tersedia {
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+        }
+
+        .badge-tersedia .dot {
+            width: 7px;
+            height: 7px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #fff;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.8);
+            }
+        }
+
+        .badge-penuh {
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+        }
+
+        .badge-tipe {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(15, 23, 42, 0.75);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(6px);
+        }
+
+        .kamar-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .kamar-header-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .kamar-nama {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .kamar-rating {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #fffbeb;
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .kamar-harga-box {
+            margin-bottom: 14px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .kamar-harga {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .kamar-periode {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .kamar-fasilitas-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .chip-fasilitas {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chip-fasilitas i {
+            color: var(--primary);
+            font-size: 11px;
+        }
+
+        .kamar-card-actions {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 8px;
+        }
+
+        /* ===== FEATURES / KEUNGGULAN SECTION ===== */
+        .section-features {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-page);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon-box {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ===== RULES & FAQ SECTION ===== */
+        .section-faq {
+            margin-bottom: 60px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            padding: 18px 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item h4 i {
+            color: var(--primary);
+        }
+
+        .faq-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 50px 24px 30px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 380px;
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-column a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13.5px;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: white;
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* ===== MODAL & POPUP SYSTEM ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: var(--radius-lg);
+            max-width: 520px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 5;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-close-modal {
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-close-modal:hover {
+            background: #e2e8f0;
+            color: var(--danger);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-label small {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 11px 14px 11px 40px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        /* Order Summary Card inside Modal */
+        .order-summary-card {
+            background: var(--bg-page);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13.5px;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .summary-row.total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border);
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 16px;
+        }
+
+        .summary-row.total .price-tag {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        /* Payment Selector */
+        .payment-options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .opsi-bayar {
+            border: 1.5px solid var(--border);
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .opsi-bayar-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .opsi-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--secondary);
+        }
+
+        .opsi-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .opsi-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .opsi-check {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: transparent;
+            font-size: 11px;
+            transition: var(--transition);
+        }
+
+        .opsi-bayar:hover {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .opsi-bayar.terpilih {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .opsi-bayar.terpilih .opsi-check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .opsi-bayar.terpilih .opsi-icon {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        /* Payment Info Box */
+        .info-bayar {
+            display: none;
+            background: white;
+            border: 1.5px solid var(--primary-light);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            margin-bottom: 18px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .info-bayar.tampil {
+            display: block;
+        }
+
+        .rekening-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-top: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .btn-copy {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .btn-copy:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* ===== SUCCESS TICKET / BOARDING PASS ===== */
+        .sukses-wrapper {
+            display: none;
+            text-align: center;
+        }
+
+        .sukses-wrapper.tampil {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .ticket-card {
+            background: #ffffff;
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 20px 0;
+            position: relative;
+            box-shadow: var(--shadow-md);
+            text-align: left;
+        }
+
+        .ticket-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .ticket-badge {
+            background: #ecfdf5;
+            color: #059669;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+        }
+
+        .ticket-qr-area {
+            text-align: center;
+            margin: 16px 0;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .ticket-qr-area canvas {
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .ticket-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .ticket-detail-item {
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .ticket-detail-item span {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .ticket-detail-item strong {
+            color: var(--secondary);
+            font-size: 13.5px;
+        }
+
+        .ticket-instruction {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-top: 14px;
+            font-size: 12px;
+            color: #92400e;
+            text-align: left;
+        }
+
+        .ticket-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* ===== ROOM DETAIL MODAL ===== */
+        .room-detail-hero {
+            position: relative;
+            height: 220px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        .room-detail-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .detail-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--secondary);
+        }
+
+        .spec-item i {
+            color: var(--primary);
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: #1e293b;
+            color: white;
+            padding: 14px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            pointer-events: auto;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border-left: 4px solid var(--primary);
+            max-width: 360px;
+        }
+
+        .toast.tampil {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-left-color: var(--success);
+        }
+
+        .toast.warning {
+            border-left-color: var(--accent);
+        }
+
+        .toast.error {
+            border-left-color: var(--danger);
+        }
+
+        /* ===== FLOATING WHATSAPP BUTTON ===== */
+        .fab-wa {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 54px;
+            height: 54px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .fab-wa:hover {
+            transform: scale(1.1);
+            color: white;
+            box-shadow: 0 12px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .fab-tooltip {
+            position: absolute;
+            left: 64px;
+            background: #1e293b;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: var(--transition);
+        }
+
+        .fab-wa:hover .fab-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .ticket-card,
+            .ticket-card * {
+                visibility: visible;
+            }
+
+            .ticket-card {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: 1px solid #000;
+                box-shadow: none;
+            }
+
+            .ticket-actions,
+            .btn-close-modal,
+            .navbar-wrapper,
+            .fab-wa {
+                display: none !important;
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 868px) {
+            .navbar {
+                padding: 12px 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .daftar-kamar {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .ticket-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== AUTH & USER PROFILE STYLES ===== */
+        .nav-auth-area {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-dropdown-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-pill-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            padding: 5px 12px 5px 6px;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--secondary);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .user-pill-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-soft);
+        }
+
+        .user-avatar-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--primary);
+        }
+
+        .user-name-text {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .user-dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            width: 230px;
+            background: white;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            padding: 8px 0;
+            z-index: 1100;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .user-dropdown-menu.active {
+            display: block;
+        }
+
+        .user-dropdown-header {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .user-dropdown-header strong {
+            display: block;
+            font-size: 14px;
+            color: var(--secondary);
+        }
+
+        .user-dropdown-header small {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .user-status-pill {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 11px;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        .user-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .user-dropdown-menu a:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding-left: 20px;
+        }
+
+        .user-dropdown-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4px 0;
+        }
+
+        .hero-user-banner {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1.5px solid var(--primary-light);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13.5px;
+            color: var(--secondary);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 18px;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Modal Auth Tabs */
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            gap: 4px;
+        }
+
+        .auth-tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .auth-tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .demo-account-box {
+            background: #f0fdfa;
+            border: 1.5px dashed var(--primary);
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .pwd-toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 4px;
+        }
+
+        /* Profile Modal Hub */
+        .profile-cover {
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), #0f766e);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            position: relative;
+        }
+
+        .profile-avatar-wrapper {
+            position: relative;
+            width: 84px;
+            height: 84px;
+            margin-top: -42px;
+            margin-left: 24px;
+        }
+
+        .profile-avatar-img {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+            background: white;
+        }
+
+        .btn-change-avatar {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 28px;
+            height: 28px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-change-avatar:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .profile-header-info {
+            padding: 10px 24px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .profile-nav-tabs {
+            display: flex;
+            gap: 4px;
+            padding: 0 20px;
+            border-bottom: 1.5px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .profile-tab-btn {
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -1.5px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .profile-tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .profile-body-content {
+            padding: 20px 24px 24px;
+        }
+
+        .active-room-card {
+            background: #ffffff;
+            border: 1.5px solid var(--primary-light);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .avatar-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .avatar-option {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .avatar-option:hover,
+        .avatar-option.selected {
+            border-color: var(--primary);
+            transform: scale(1.08);
+            box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar-wrapper">
+        <nav class="navbar">
+            <a href="<!DOCTYPE html>.html" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-house-chimney-window"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>MY KOST PUDEW <span class="brand-badge">Smart Living</span></h1>
+                    <p>Sewa Kamar Online & Smart Lock</p>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#daftarKamarSection" class="active">Kamar</a></li>
+                <li><a href="#keunggulanSection">Keunggulan</a></li>
+                <li><a href="#aturanSection">Aturan Kos</a></li>
+                <li><a href="#lokasiSection">Lokasi & Kontak</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="btn btn-outline btn-sm" onclick="bukaModalCekTiket()">
+                    <i class="fa-solid fa-qrcode"></i> Tiket Saya
+                </button>
+                <div id="navAuthArea" class="nav-auth-area">
+                    <button class="btn btn-primary btn-sm" onclick="bukaModalAuth('masuk')">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk / Daftar
+                    </button>
+                </div>
+                <a href="admin.html" class="btn btn-admin btn-sm">
+                    <i class="fa-solid fa-lock"></i> Admin
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div id="heroUserWelcome" style="display:none;" class="hero-user-banner">
+                <i class="fa-solid fa-circle-user" style="color:var(--primary); font-size:16px;"></i>
+                <span>Halo, <strong id="heroWelcomeName">Pengguna</strong>!</span>
+                <span style="color:var(--text-muted); font-size:12px;">•</span>
+                <a href="javascript:void(0)" onclick="bukaModalProfil('ringkasan')"
+                    style="color:var(--primary); font-weight:700; text-decoration:none;">
+                    <i class="fa-solid fa-key"></i> Kamar & Smart QR Saya &rarr;
+                </a>
+            </div>
+            <div class="hero-pill">
+                <i class="fa-solid fa-shield-halved"></i> 100% Aman, Praktis & Nyaman
+            </div>
+            <h2>Temukan Hunian Kost Idaman dengan <span>Akses Smart QR Lock</span></h2>
+            <p>Pesan kamar online seketika, bayar mudah via QRIS / Bank Transfer, dan langsung dapatkan kode QR pembuka
+                pintu otomatis di ponsel Anda.</p>
+
+            <div class="hero-badges">
+                <div class="hero-feature-badge">
+                    <i class="fa-solid fa-bolt"></i> Konfirmasi Instan
+                </div>
+                <div class="hero-feature-badge">
+                    <i class="fa-solid fa-key"></i> Smart Lock Otomatis
+                </div>
+                <div class="hero-feature-badge">
+                    <i class="fa-solid fa-wifi"></i> Free WiFi 100 Mbps
+                </div>
+                <div class="hero-feature-badge">
+                    <i class="fa-solid fa-money-bill-wave"></i> Tanpa Biaya Admin
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container">
+
+        <!-- SEARCH & FILTER SECTION -->
+        <section class="filter-section">
+            <div class="filter-grid">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="inputPencarian" class="search-input"
+                        placeholder="Cari kamar (contoh: AC, WiFi, Kamar 1...)" oninput="filterKamar()">
+                </div>
+                <div>
+                    <select id="filterHarga" class="select-filter" onchange="filterKamar()">
+                        <option value="semua">Semua Rentang Harga</option>
+                        <option value="dibawah500">&le; Rp 500.000 / bln</option>
+                        <option value="diatas500">&gt; Rp 500.000 / bln</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="sortKamar" class="select-filter" onchange="filterKamar()">
+                        <option value="default">Urutkan: Rekomendasi</option>
+                        <option value="termurah">Harga: Termurah</option>
+                        <option value="termahal">Harga: Termahal</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-tags">
+                <span style="font-size:12px; font-weight:600; color:var(--text-muted); margin-right:4px;">Filter
+                    Cepat:</span>
+                <span class="tag-pill active" onclick="setKategoriFilter('semua', this)">Semua</span>
+                <span class="tag-pill" onclick="setKategoriFilter('tersedia', this)">Tersedia Saja</span>
+                <span class="tag-pill" onclick="setKategoriFilter('ac', this)">Ber-AC</span>
+                <span class="tag-pill" onclick="setKategoriFilter('kipas', this)">Kipas Angin</span>
+                <span class="tag-pill" onclick="setKategoriFilter('wifi', this)">Free WiFi</span>
+            </div>
+        </section>
+
+        <!-- ROOM LIST SECTION -->
+        <section id="daftarKamarSection">
+            <div class="section-header">
+                <div class="section-title">
+                    <h3>Pilihan Kamar Kost</h3>
+                    <p>Pilih kamar yang sesuai dengan kebutuhan dan kenyamanan Anda.</p>
+                </div>
+                <div class="rooms-count-badge" id="badgeJumlahKamar">
+                    Menampilkan 5 Kamar
+                </div>
+            </div>
+
+            <!-- Grid of Room Cards -->
+            <div class="daftar-kamar" id="daftarKamar"></div>
+        </section>
+
+        <!-- KEUNGGULAN SECTION -->
+        <section class="section-features" id="keunggulanSection">
+            <div class="container" style="padding:0;">
+                <div class="section-title" style="text-align: center; max-width:600px; margin: 0 auto;">
+                    <h3>Kenapa Memilih MY KOST PUDEW?</h3>
+                    <p>Kenyamanan, keamanan, dan kemudahan teknologi modern untuk pengalaman tinggal terbaik Anda.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <h4>Smart QR Key Access</h4>
+                        <p>Buka pintu kamar dengan scan QR dari ponsel Anda. Tanpa takut kunci manual tertinggal atau
+                            hilang.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <h4>High Speed WiFi</h4>
+                        <p>Internet berkecepatan tinggi hingga 100 Mbps, lancar untuk kuliah online, WFH, streaming, dan
+                            gaming.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h4>CCTV & Keamanan 24 Jam</h4>
+                        <p>Lingkungan aman dan tenang dengan pemantauan kamera CCTV 24 jam serta pagar tertutup
+                            otomatis.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <h4>Parkir Luas & Teduh</h4>
+                        <p>Area parkir motor dan mobil beratap kanopi luas, terlindung dari hujan dan terik matahari.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                        <h4>Air Bersih & Bebas Iuran</h4>
+                        <p>Air jernih lancar tanpa batas, fasilitas dapur bersama, kulkas umum, dan air minum gratis.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h4>Lokasi Strategis</h4>
+                        <p>Dekat dengan minimarket, halte/stasiun, kampus, pusat kuliner enak dan perkantoran kota.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATURAN KOS & FAQ -->
+        <section class="section-faq" id="aturanSection">
+            <div class="section-title" style="margin-bottom:24px;">
+                <h3>Aturan Kos & Informasi Penting</h3>
+                <p>Tata tertib untuk kenyamanan dan keharmonisan seluruh penghuni kos.</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fa-solid fa-clock"></i> Akses Masuk 24 Jam</h4>
+                    <p>Penghuni bebas keluar masuk 24 jam menggunakan Smart QR Access. Gerbang utama selalu terkunci
+                        untuk keamanan.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fa-solid fa-users"></i> Aturan Tamu & Jam Kunjungan</h4>
+                    <p>Tamu diterima di ruang tamu bersama hingga pukul 22.00 WIB demi ketenangan penghuni lainnya.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fa-solid fa-broom"></i> Kebersihan & Fasilitas Bersama</h4>
+                    <p>Dapur dan area jemuran dibersihkan berkala oleh petugas. Penghuni diharapkan menjaga kerapihan
+                        bersama.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fa-solid fa-file-invoice-dollar"></i> Pembayaran & Perpanjangan</h4>
+                    <p>Pembayaran sewa dilakukan tepat waktu setiap bulannya melalui QRIS atau transfer bank resmi MY
+                        KOST.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="lokasiSection">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3><i class="fa-solid fa-house-chimney-window" style="color:var(--primary);"></i> MY KOST PUDEW</h3>
+                <p>Platform sewa kamar kost modern dengan integrasi teknologi Smart Lock QR Code. Hunian bersih, aman,
+                    tenang, dan strategis untuk mahasiswa dan profesional muda.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#daftarKamarSection">Daftar Kamar</a></li>
+                    <li><a href="#keunggulanSection">Fasilitas Kos</a></li>
+                    <li><a href="#aturanSection">Tata Tertib</a></li>
+                    <li><a href="admin.html">Portal Pengelola (Admin)</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Hubungi Pengelola</h4>
+                <ul>
+                    <li><i class="fa-solid fa-phone" style="margin-right:6px; color:var(--primary);"></i> 0859-xxxx-xxxx
+                    </li>
+                    <li><i class="fa-brands fa-whatsapp" style="margin-right:6px; color:#25d366;"></i> WhatsApp Siaga
+                    </li>
+                    <li><i class="fa-solid fa-map-pin" style="margin-right:6px; color:var(--accent);"></i> Jl. Melati
+                        Indah No. 12</li>
+                    <li><i class="fa-solid fa-clock" style="margin-right:6px; color:var(--primary);"></i> Buka Setiap
+                        Hari</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 MY KOST PUDEW — Seluruh Hak Cipta Dilindungi.</div>
+            <div>Didesain dengan <i class="fa-solid fa-heart" style="color:#ef4444;"></i> untuk kenyamanan penghuni.
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/6285900000000?text=Halo%20Pengelola%20MY%20KOST%20PUDEW,%20saya%20mau%20tanya%20tentang%20kamar%20kost"
+        target="_blank" class="fab-wa" title="Chat WhatsApp Pemilik">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="fab-tooltip">Tanya Pengelola</span>
+    </a>
+
+    <!-- ===== MODAL BOOKING / PESAN KAMAR ===== -->
+    <div class="modal" id="modalPesan">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="judulModal"><i class="fa-solid fa-calendar-check" style="color:var(--primary);"></i> Form
+                    Pemesanan</h3>
+                <button class="btn-close-modal" onclick="tutupModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- FORM BAGIAN -->
+                <div id="bagianForm">
+                    <div class="order-summary-card">
+                        <div class="summary-row">
+                            <span>Kamar Dipilih:</span>
+                            <strong id="ringkasanKamar" style="color:var(--secondary);">-</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Tarif Dasar:</span>
+                            <span id="ringkasanTarif">-</span>
+                        </div>
+                        <div class="summary-row" id="rowDiskon" style="display:none; color:var(--success);">
+                            <span>Potongan Durasi:</span>
+                            <strong id="ringkasanDiskon">-</strong>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Pembayaran:</span>
+                            <span class="price-tag" id="ringkasanTotal">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="namaPenyewa">Nama Lengkap <small>(sesuai KTP)</small>:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="namaPenyewa" class="form-control" placeholder="Contoh: Budi Pratama">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="noHp">No. WhatsApp / HP Aktif:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <input type="tel" id="noHp" class="form-control" placeholder="Contoh: 081234567890">
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                        <div class="form-group">
+                            <label class="form-label" for="tglMasuk">Tanggal Masuk:</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-calendar-day"></i>
+                                <input type="date" id="tglMasuk" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="durasi">Durasi Sewa:</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                                <select id="durasi" class="form-control" onchange="hitungTotalBayar()">
+                                    <option value="bulan">1 Bulan</option>
+                                    <option value="3bulan">3 Bulan (Diskon 5%)</option>
+                                    <option value="6bulan">6 Bulan (Diskon 10%)</option>
+                                    <option value="tahun">1 Tahun (Diskon 15%)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Pilih Metode Pembayaran:</label>
+                        <div class="payment-options-grid">
+                            <div class="opsi-bayar" data-bayar="QRIS" onclick="pilihBayar(this)">
+                                <div class="opsi-bayar-left">
+                                    <div class="opsi-icon"><i class="fa-solid fa-qrcode"></i></div>
+                                    <div>
+                                        <div class="opsi-title">QRIS Instan</div>
+                                        <div class="opsi-desc">BCA, GoPay, OVO, Dana, ShopeePay</div>
+                                    </div>
+                                </div>
+                                <div class="opsi-check"><i class="fa-solid fa-check"></i></div>
+                            </div>
+
+                            <div class="opsi-bayar" data-bayar="BANK" onclick="pilihBayar(this)">
+                                <div class="opsi-bayar-left">
+                                    <div class="opsi-icon"><i class="fa-solid fa-building-columns"></i></div>
+                                    <div>
+                                        <div class="opsi-title">Transfer Bank Virtual / Rekening</div>
+                                        <div class="opsi-desc">BCA, BRI, Mandiri, BNI</div>
+                                    </div>
+                                </div>
+                                <div class="opsi-check"><i class="fa-solid fa-check"></i></div>
+                            </div>
+
+                            <div class="opsi-bayar" data-bayar="CASH" onclick="pilihBayar(this)">
+                                <div class="opsi-bayar-left">
+                                    <div class="opsi-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                                    <div>
+                                        <div class="opsi-title">Bayar Tunai di Tempat</div>
+                                        <div class="opsi-desc">Bayar langsung saat serah terima kunci</div>
+                                    </div>
+                                </div>
+                                <div class="opsi-check"><i class="fa-solid fa-check"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANDUAN BAYAR QRIS -->
+                    <div class="info-bayar" id="infoQRIS">
+                        <div style="text-align:center; margin-bottom:10px;">
+                            <strong style="color:var(--secondary); font-size:14px;"><i class="fa-solid fa-qrcode"
+                                    style="color:var(--primary);"></i> Scan QRIS Pembayaran</strong>
+                            <p style="font-size:12px; color:var(--text-muted);">Mendukung semua mobile banking &
+                                e-wallet</p>
+                        </div>
+                        <div
+                            style="background:#f1f5f9; padding:15px; border-radius:8px; text-align:center; border:1px dashed var(--primary);">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=MYKOST-PAYMENT-SANJAYA"
+                                alt="QRIS Demo"
+                                style="display:inline-block; border-radius:6px; background:white; padding:6px; box-shadow:var(--shadow-sm);">
+                            <div style="margin-top:8px; font-weight:700; color:var(--secondary); font-size:13px;">NMID:
+                                ID1029384756382</div>
+                            <div style="font-size:12px; color:var(--text-muted);">a.n. SANJAYA — MY KOST PUDEW OFFICIAL
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANDUAN BAYAR BANK -->
+                    <div class="info-bayar" id="infoBANK">
+                        <strong style="color:var(--secondary); font-size:14px;"><i class="fa-solid fa-building-columns"
+                                style="color:var(--primary);"></i> Rekening Resmi MY KOST PUDEW:</strong>
+                        <div class="rekening-box">
+                            <div>
+                                <strong style="font-size:13px; color:var(--secondary);">BCA: 8820 9182 31</strong><br>
+                                <small style="color:var(--text-muted);">a.n. Sanjaya</small>
+                            </div>
+                            <button class="btn-copy" onclick="salinTeks('8820918231', 'Nomor rekening BCA')"><i
+                                    class="fa-regular fa-copy"></i> Salin</button>
+                        </div>
+                        <div class="rekening-box">
+                            <div>
+                                <strong style="font-size:13px; color:var(--secondary);">BRI: 1234 0100 5678
+                                    509</strong><br>
+                                <small style="color:var(--text-muted);">a.n. Sanjaya</small>
+                            </div>
+                            <button class="btn-copy" onclick="salinTeks('123401005678509', 'Nomor rekening BRI')"><i
+                                    class="fa-regular fa-copy"></i> Salin</button>
+                        </div>
+                        <div class="rekening-box">
+                            <div>
+                                <strong style="font-size:13px; color:var(--secondary);">Mandiri: 137 00 9876
+                                    5432</strong><br>
+                                <small style="color:var(--text-muted);">a.n. Sanjaya</small>
+                            </div>
+                            <button class="btn-copy" onclick="salinTeks('1370098765432', 'Nomor rekening Mandiri')"><i
+                                    class="fa-regular fa-copy"></i> Salin</button>
+                        </div>
+                    </div>
+
+                    <!-- PANDUAN BAYAR CASH -->
+                    <div class="info-bayar" id="infoCASH">
+                        <div style="display:flex; gap:10px; align-items:flex-start;">
+                            <i class="fa-solid fa-circle-info"
+                                style="color:var(--primary); font-size:18px; margin-top:2px;"></i>
+                            <div style="font-size:13px; color:var(--text-main);">
+                                <strong>Bayar Langsung ke Pengelola:</strong><br>
+                                Silakan datang ke alamat kost saat tanggal masuk. Tunjukkan bukti pemesanan QR ke
+                                pemilik kost (Pak Sanjaya) untuk aktivasi kamar.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; margin-top:24px;">
+                        <button class="btn btn-outline" style="flex:1;" onclick="tutupModal()">Batal</button>
+                        <button class="btn btn-primary" style="flex:2;" onclick="kirimPesanan()">
+                            <i class="fa-solid fa-paper-plane"></i> Konfirmasi & Dapatkan QR
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUKSES & BOARDING PASS / TIKET AKSES -->
+                <div class="sukses-wrapper" id="bagianSukses">
+                    <div
+                        style="width:56px; height:56px; background:#dcfce7; color:#10b981; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:12px;">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 style="color:var(--secondary); font-size:20px; font-weight:800; margin-bottom:4px;">Pemesanan
+                        Berhasil!</h3>
+                    <p style="font-size:13px; color:var(--text-muted);">Selamat datang di MY KOST PUDEW, <strong
+                            id="namaSukses" style="color:var(--secondary);"></strong>!</p>
+
+                    <!-- DIGITAL TICKET -->
+                    <div class="ticket-card" id="areaTiket">
+                        <div class="ticket-header">
+                            <div>
+                                <span style="font-size:11px; color:var(--text-muted); font-weight:700;">DIGITAL ACCESS
+                                    PASS</span>
+                                <h4 style="font-size:16px; font-weight:800; color:var(--primary); margin:0;">MY KOST
+                                    PUDEW
+                                    SMART KEY</h4>
+                            </div>
+                            <span class="ticket-badge" id="statusTiket">AKTIF</span>
+                        </div>
+
+                        <div class="ticket-qr-area" id="kotakQR">
+                            <!-- Canvas QR will be rendered here -->
+                        </div>
+
+                        <div class="ticket-details">
+                            <div class="ticket-detail-item">
+                                <span>KODE BOOKING</span>
+                                <strong id="qrKodeBooking">-</strong>
+                            </div>
+                            <div class="ticket-detail-item">
+                                <span>KAMAR</span>
+                                <strong id="qrKamar">-</strong>
+                            </div>
+                            <div class="ticket-detail-item">
+                                <span>TANGGAL MASUK</span>
+                                <strong id="qrTanggal">-</strong>
+                            </div>
+                            <div class="ticket-detail-item">
+                                <span>METODE BAYAR</span>
+                                <strong id="bayarSukses">-</strong>
+                            </div>
+                        </div>
+
+                        <div class="ticket-instruction">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <strong>Petunjuk Smart Lock:</strong> Arahkan layar ponsel dengan kode QR di atas ke kamera
+                            scanner di handle pintu kamar untuk membuka kunci otomatis.
+                        </div>
+                    </div>
+
+                    <div class="ticket-actions">
+                        <button class="btn btn-primary btn-block" onclick="kirimKonfirmasiWA()">
+                            <i class="fa-brands fa-whatsapp"></i> Kirim Bukti ke WhatsApp Pemilik
+                        </button>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                            <button class="btn btn-outline" onclick="window.print()">
+                                <i class="fa-solid fa-print"></i> Cetak / Simpan
+                            </button>
+                            <button class="btn btn-outline" onclick="salinKodeBooking()">
+                                <i class="fa-regular fa-copy"></i> Salin Kode
+                            </button>
+                        </div>
+                        <button class="btn btn-admin btn-block" style="margin-top:6px;" onclick="tutupModal()">
+                            Selesai & Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DETAIL KAMAR ===== -->
+    <div class="modal" id="modalDetailKamar">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="detailJudulKamar"><i class="fa-solid fa-bed" style="color:var(--primary);"></i> Spesifikasi
+                    Kamar</h3>
+                <button class="btn-close-modal" onclick="tutupModalDetail()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="room-detail-hero">
+                    <img id="detailFotoKamar" src="" alt="Foto Kamar">
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
+                    <div>
+                        <h4 id="detailNamaKamar"
+                            style="font-size:20px; font-weight:800; color:var(--secondary); margin:0;">-</h4>
+                        <span id="detailStatusBadge" class="badge-tersedia"
+                            style="display:inline-block; padding:2px 10px; border-radius:12px; font-size:12px; font-weight:700; margin-top:4px;">Tersedia</span>
+                    </div>
+                    <div style="text-align:right;">
+                        <div id="detailHargaKamar" style="font-size:22px; font-weight:800; color:var(--primary);">-
+                        </div>
+                        <small style="color:var(--text-muted);">per bulan</small>
+                    </div>
+                </div>
+
+                <div
+                    style="background:#f8fafc; padding:12px 14px; border-radius:8px; margin-bottom:14px; border:1px solid var(--border);">
+                    <div
+                        style="font-size:12px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:4px;">
+                        Ukuran Kamar</div>
+                    <div style="font-size:14px; font-weight:700; color:var(--secondary);"><i
+                            class="fa-solid fa-maximize" style="color:var(--primary); margin-right:6px;"></i> 3 x 4
+                        Meter (Kamar Luas & Ventilasi Jendela)</div>
+                </div>
+
+                <h5 style="font-size:14px; font-weight:700; color:var(--secondary); margin-bottom:8px;">Daftar Fasilitas
+                    Lengkap:</h5>
+                <div class="detail-spec-grid" id="detailFasilitasGrid">
+                    <!-- Dynamic spec items -->
+                </div>
+
+                <div
+                    style="background:#f0fdfa; border:1px solid var(--primary-light); padding:12px 14px; border-radius:8px; margin:16px 0; font-size:13px; color:var(--primary-dark);">
+                    <i class="fa-solid fa-shield-check" style="margin-right:6px;"></i>
+                    <strong>Jaminan Kebersihan:</strong> Kamar dibersihkan dan disinfeksi menyeluruh sebelum serah
+                    terima. Kasur sudah dilapisi sprei baru.
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:20px;">
+                    <button class="btn btn-outline" style="flex:1;" onclick="tutupModalDetail()">Tutup</button>
+                    <button class="btn btn-primary" style="flex:2;" id="btnDetailPesan" onclick="pesanDariDetail()">
+                        <i class="fa-solid fa-bolt"></i> Pesan Kamar Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL CEK TIKET SAYA ===== -->
+    <div class="modal" id="modalCekTiket">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-qrcode" style="color:var(--primary);"></i> Cek Tiket & Smart QR Saya</h3>
+                <button class="btn-close-modal" onclick="tutupModalCekTiket()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px;">
+                    Sudah pernah memesan? Masukkan No. WhatsApp atau Kode Booking Anda untuk menampilkan kembali QR
+                    Pembuka Pintu Anda.
+                </p>
+
+                <div class="form-group">
+                    <label class="form-label" for="inputCariTiket">No. WhatsApp atau Kode Booking:</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="inputCariTiket" class="form-control"
+                            placeholder="Contoh: 08123456789 atau KOS-12345">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block" onclick="cariTiketSaya()">
+                    <i class="fa-solid fa-search"></i> Cari Tiket QR
+                </button>
+
+                <div id="hasilPencarianTiket" style="margin-top:20px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL MASUK / DAFTAR (AUTH) ===== -->
+    <div class="modal" id="modalAuth">
+        <div class="modal-box" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 id="judulModalAuth"><i class="fa-solid fa-right-to-bracket" style="color:var(--primary);"></i> Masuk
+                    ke Akun</h3>
+                <button class="btn-close-modal" onclick="tutupModalAuth()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="padding: 20px 24px;">
+                <!-- Segmented Tabs -->
+                <div class="auth-tabs">
+                    <button class="auth-tab-btn active" id="tabBtnMasuk" onclick="gantiTabAuth('masuk')">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk
+                    </button>
+                    <button class="auth-tab-btn" id="tabBtnDaftar" onclick="gantiTabAuth('daftar')">
+                        <i class="fa-solid fa-user-plus"></i> Daftar Baru
+                    </button>
+                </div>
+
+                <!-- FORM MASUK (LOGIN) -->
+                <div id="formMasukArea">
+                    <div class="demo-account-box">
+                        <div>
+                            <strong style="font-size:12.5px; color:var(--primary-dark);"><i
+                                    class="fa-solid fa-bolt"></i> Coba Akun Demo:</strong>
+                            <div style="font-size:12px; color:var(--text-muted);">Budi Pratama (Penyewa Kamar No. 2)
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-sm" onclick="masukDemoUser(0)">
+                            Masuk Cepat
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="loginIdentifier">No. WhatsApp / HP atau Email:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="loginIdentifier" class="form-control"
+                                placeholder="081234567890 atau email@anda.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="loginPassword">Kata Sandi:</label>
+                        <div class="input-wrapper" style="position:relative;">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="loginPassword" class="form-control"
+                                placeholder="Masukkan kata sandi">
+                            <button type="button" class="pwd-toggle-btn"
+                                onclick="toggleShowPassword('loginPassword', this)">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; font-size:12.5px;">
+                        <label
+                            style="display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-muted);">
+                            <input type="checkbox" id="loginRemember" checked> Ingat saya
+                        </label>
+                        <a href="javascript:void(0)"
+                            onclick="tampilToast('Silakan gunakan sandi demo: 123 atau hubungi pengelola.', 'info')"
+                            style="color:var(--primary); text-decoration:none; font-weight:600;">Lupa sandi?</a>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="prosesLogin()">
+                        <i class="fa-solid fa-right-to-bracket"></i> Masuk Sekarang
+                    </button>
+
+                    <div style="text-align:center; margin-top:16px; font-size:13px; color:var(--text-muted);">
+                        Belum punya akun? <a href="javascript:void(0)" onclick="gantiTabAuth('daftar')"
+                            style="color:var(--primary); font-weight:700; text-decoration:none;">Daftar gratis di
+                            sini</a>
+                    </div>
+                </div>
+
+                <!-- FORM DAFTAR (REGISTER) -->
+                <div id="formDaftarArea" style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label" for="regNama">Nama Lengkap <small>(sesuai KTP)</small>:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-address-card"></i>
+                            <input type="text" id="regNama" class="form-control" placeholder="Contoh: Muhammad Rezky">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regHp">No. WhatsApp / HP Aktif:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <input type="tel" id="regHp" class="form-control" placeholder="Contoh: 081234567890">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regEmail">Email:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="regEmail" class="form-control" placeholder="nama@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword">Buat Kata Sandi:</label>
+                        <div class="input-wrapper" style="position:relative;">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="regPassword" class="form-control"
+                                placeholder="Minimal 4 karakter">
+                            <button type="button" class="pwd-toggle-btn"
+                                onclick="toggleShowPassword('regPassword', this)">
+                                <i class="fa-regular fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPekerjaan">Status / Pekerjaan
+                            <small>(opsional)</small>:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <input type="text" id="regPekerjaan" class="form-control"
+                                placeholder="Mahasiswa / Karyawan / WFH">
+                        </div>
+                    </div>
+
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">
+                        Dengan mendaftar, Anda menyetujui tata tertib & ketentuan hunian di MY KOST PUDEW.
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="prosesDaftar()">
+                        <i class="fa-solid fa-user-plus"></i> Buat Akun & Masuk
+                    </button>
+
+                    <div style="text-align:center; margin-top:16px; font-size:13px; color:var(--text-muted);">
+                        Sudah punya akun? <a href="javascript:void(0)" onclick="gantiTabAuth('masuk')"
+                            style="color:var(--primary); font-weight:700; text-decoration:none;">Masuk di sini</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL PROFIL PENGGUNA (PROFILE HUB) ===== -->
+    <div class="modal" id="modalProfil">
+        <div class="modal-box" style="max-width: 540px; padding: 0; overflow: hidden;">
+            <!-- Profile Cover -->
+            <div class="profile-cover">
+                <button class="btn-close-modal"
+                    style="position:absolute; top:12px; right:12px; background:rgba(0,0,0,0.3); color:white;"
+                    onclick="tutupModalProfil()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Profile Header Info -->
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; padding: 0 20px;">
+                <div class="profile-avatar-wrapper">
+                    <img id="profilFotoUtama"
+                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+                        class="profile-avatar-img" alt="Avatar">
+                    <button class="btn-change-avatar" title="Ganti Avatar / Foto" onclick="bukaModalPilihAvatar()">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+                </div>
+                <div style="padding-bottom: 6px;">
+                    <span class="user-status-pill" id="profilStatusBadge">
+                        <i class="fa-solid fa-circle-check"></i> Penyewa Aktif
+                    </span>
+                </div>
+            </div>
+
+            <div class="profile-header-info">
+                <div>
+                    <h3 id="profilNamaLengkap"
+                        style="font-size:20px; font-weight:800; color:var(--secondary); margin:0;">Budi Pratama</h3>
+                    <p style="font-size:13px; color:var(--text-muted); margin-top:2px;">
+                        <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> <span
+                            id="profilNoHp">081234567890</span> • <span id="profilEmail">budi@gmail.com</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Navigation Tabs -->
+            <div class="profile-nav-tabs">
+                <button class="profile-tab-btn active" id="ptabKamar" onclick="gantiTabProfil('ringkasan')">
+                    <i class="fa-solid fa-key"></i> Kamar & Smart QR
+                </button>
+                <button class="profile-tab-btn" id="ptabBiodata" onclick="gantiTabProfil('biodata')">
+                    <i class="fa-solid fa-user-pen"></i> Data Diri
+                </button>
+                <button class="profile-tab-btn" id="ptabRiwayat" onclick="gantiTabProfil('riwayat')">
+                    <i class="fa-solid fa-receipt"></i> Riwayat Sewa
+                </button>
+                <button class="profile-tab-btn" id="ptabKeamanan" onclick="gantiTabProfil('keamanan')">
+                    <i class="fa-solid fa-shield"></i> Keamanan
+                </button>
+            </div>
+
+            <!-- Profile Body Content -->
+            <div class="profile-body-content">
+                <!-- TAB 1: KAMAR SAYA & SMART QR -->
+                <div id="tabKontenKamar">
+                    <div id="areaKamarAktifUser">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB 2: DATA DIRI & IDENTITAS -->
+                <div id="tabKontenBiodata" style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label" for="editNama">Nama Lengkap:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="editNama" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                        <div class="form-group">
+                            <label class="form-label" for="editHp">No. WhatsApp:</label>
+                            <div class="input-wrapper">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <input type="tel" id="editHp" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="editEmail">Email:</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input type="email" id="editEmail" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editKtp">No. KTP / NIK Identitas:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-id-card"></i>
+                            <input type="text" id="editKtp" class="form-control" placeholder="16 digit NIK KTP">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editPekerjaan">Pekerjaan / Kampus:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <input type="text" id="editPekerjaan" class="form-control"
+                                placeholder="Contoh: Karyawan / Mahasiswa">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="editKontakDarurat">Kontak Darurat (Nama & No. HP
+                            Keluarga):</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <input type="text" id="editKontakDarurat" class="form-control"
+                                placeholder="Contoh: Ibu Ani (08123456789)">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="simpanProfil()">
+                        <i class="fa-solid fa-floppy-disk"></i> Simpan Perubahan Data
+                    </button>
+                </div>
+
+                <!-- TAB 3: RIWAYAT PEMESANAN -->
+                <div id="tabKontenRiwayat" style="display:none;">
+                    <div id="daftarRiwayatUser">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: KEAMANAN & SANDI -->
+                <div id="tabKontenKeamanan" style="display:none;">
+                    <div class="form-group">
+                        <label class="form-label" for="oldPassword">Kata Sandi Saat Ini:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="oldPassword" class="form-control"
+                                placeholder="Masukkan sandi lama">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="newPassword">Kata Sandi Baru:</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="newPassword" class="form-control"
+                                placeholder="Minimal 4 karakter">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" onclick="gantiKataSandi()">
+                        <i class="fa-solid fa-shield-halved"></i> Perbarui Kata Sandi
+                    </button>
+                </div>
+
+                <!-- Logout Button Footer -->
+                <div
+                    style="margin-top:20px; padding-top:16px; border-top:1px dashed var(--border); display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--text-muted);">
+                        Bergabung sejak <strong id="profilTglGabung">-</strong>
+                    </span>
+                    <button class="btn btn-outline btn-sm"
+                        style="color:var(--danger); border-color:#fee2e2; background:#fef2f2;" onclick="prosesLogout()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL PILIH AVATAR ===== -->
+    <div class="modal" id="modalPilihAvatar" style="z-index: 2500;">
+        <div class="modal-box" style="max-width: 400px; text-align: center;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-camera" style="color:var(--primary);"></i> Pilih Foto Profil</h3>
+                <button class="btn-close-modal" onclick="tutupModalPilihAvatar()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:14px;">Pilih salah satu avatar karakter
+                    atau masukkan URL foto kamu:</p>
+
+                <div class="avatar-picker-grid">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 1">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 2">
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 3">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 4">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 5">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 6">
+                    <img src="https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 7">
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=150&q=80"
+                        class="avatar-option" onclick="pilihAvatar(this.src)" alt="Avatar 8">
+                </div>
+
+                <div class="form-group" style="text-align:left; margin-top:14px;">
+                    <label class="form-label" for="customAvatarUrl">Atau URL Foto Eksternal:</label>
+                    <input type="url" id="customAvatarUrl" class="form-control"
+                        placeholder="https://contoh.com/foto.jpg">
+                </div>
+                <button class="btn btn-primary btn-block btn-sm" onclick="simpanCustomAvatarUrl()">
+                    Terapkan Foto Custom
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- SCRIPT JAVASCRIPT -->
+    <script>
+        // Database kamar kost lengkap dengan foto estetis dan fasilitas
+        let daftarKamar = [
+            {
+                id: 1,
+                nama: "Kamar No. 1 — Standar Nyaman",
+                tipe: "Standar Single",
+                harga: 500000,
+                rating: 4.8,
+                foto: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80",
+                fasilitas: "Kasur Springbed, Lemari Pakaian, Kipas Angin, Listrik Free, Air Bersih",
+                fitur: ["Kasur Springbed", "Lemari 2 Pintu", "Kipas Angin Dinding", "Listrik Free", "Air Bersih Lancar", "Kamar Mandi Luar"],
+                tersedia: true
+            },
+            {
+                id: 2,
+                nama: "Kamar No. 2 — Standar Meja Kerja",
+                tipe: "Standar Single",
+                harga: 500000,
+                rating: 4.9,
+                foto: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80",
+                fasilitas: "Kasur Springbed, Lemari, Meja Belajar, Kipas Angin, Listrik, Air",
+                fitur: ["Kasur Single", "Meja & Kursi Kerja", "Lemari Pakaian", "Kipas Angin", "Listrik & Air Free", "WiFi Sharing"],
+                tersedia: true
+            },
+            {
+                id: 3,
+                nama: "Kamar No. 3 — Deluxe AC & WiFi",
+                tipe: "Deluxe Modern",
+                harga: 650000,
+                rating: 5.0,
+                foto: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80",
+                fasilitas: "Kasur King, Lemari Modern, AC Dingin, Listrik, Air, WiFi 100Mbps",
+                fitur: ["AC 1/2 PK Dingin", "WiFi Super Cepat 100 Mbps", "Kasur King Koil", "Lemari Sliding Modern", "Kamar Mandi Dalam", "Listrik Termasuk"],
+                tersedia: true
+            },
+            {
+                id: 4,
+                nama: "Kamar No. 4 — Deluxe AC Executive",
+                tipe: "Deluxe Modern",
+                harga: 650000,
+                rating: 4.9,
+                foto: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80",
+                fasilitas: "Kasur Queen, Lemari Mewah, AC, Listrik, Air, WiFi 100Mbps",
+                fitur: ["AC Dingin Hemat Energi", "WiFi 100 Mbps", "Springbed Queen Size", "Meja Kerja Minimalis", "Kamar Mandi Dalam Shower", "Smart Door Lock"],
+                tersedia: true
+            },
+            {
+                id: 5,
+                nama: "Kamar No. 5 — Ekonomis Minimalis",
+                tipe: "Hemat Budget",
+                harga: 400000,
+                rating: 4.7,
+                foto: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
+                fasilitas: "Kasur Busa Tebal, Lemari, Kipas Angin, Air Bersih Free",
+                fitur: ["Kasur Busa Tebal", "Lemari Pakaian", "Kipas Angin Dinding", "Ventilasi Jendela Lebar", "Air Bersih Gratis", "Listrik Token Mandiri"],
+                tersedia: true
+            }
+        ];
+
+        // Sinkronisasi status ketersediaan kamar secara otomatis berdasarkan pesanan aktif
+        function sinkronisasiStatusKamar() {
+            // Ambil semua pesanan dari localStorage
+            const semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+
+            // Kumpulkan daftar pesanan aktif (bukan yang dibatalkan)
+            const pesananAktifList = semuaPesanan.filter(p => p.status !== 'Dibatalkan');
+
+            // Ambil data manual override admin (jika ada kamar yang sengaja ditutup secara manual)
+            let manualOverrides = {};
+            try {
+                const storedOverrides = localStorage.getItem('kamarManualOverrides');
+                if (storedOverrides) manualOverrides = JSON.parse(storedOverrides);
+            } catch (e) { }
+
+            daftarKamar.forEach(kamar => {
+                const id = Number(kamar.id);
+                const pesananTerkait = pesananAktifList.find(p => Number(p.kamarId) === id);
+
+                if (pesananTerkait) {
+                    // OTOMATIS PENUH jika kamar sedang memiliki pemesanan aktif
+                    kamar.tersedia = false;
+                    kamar.penyewaAktif = pesananTerkait.namaPenyewa;
+                    kamar.idBooking = pesananTerkait.id;
+                    kamar.statusKet = 'Sudah Dipesan';
+                } else if (manualOverrides[id] !== undefined) {
+                    // Menghormati pengaturan manual admin jika tidak ada pemesanan
+                    kamar.tersedia = Boolean(manualOverrides[id]);
+                    kamar.penyewaAktif = null;
+                    kamar.idBooking = null;
+                    kamar.statusKet = kamar.tersedia ? 'Tersedia' : 'Ditutup Pengelola';
+                } else {
+                    // OTOMATIS TERSEDIA jika kamar belum dipesan
+                    kamar.tersedia = true;
+                    kamar.penyewaAktif = null;
+                    kamar.idBooking = null;
+                    kamar.statusKet = 'Tersedia';
+                }
+            });
+
+            // Simpan snapshot status terbaru ke localStorage
+            localStorage.setItem('kamarKosCustom', JSON.stringify(daftarKamar));
+        }
+
+        let kamarDipilih = null;
+        let metodeBayar = '';
+        let pesananSaatIni = null;
+        let kategoriFilterAktif = 'semua';
+
+        // Tampilkan daftar kamar di halaman
+        function renderKamar(list) {
+            const wadah = document.getElementById('daftarKamar');
+            wadah.innerHTML = '';
+
+            const badgeTotal = document.getElementById('badgeJumlahKamar');
+            if (badgeTotal) {
+                const totalTersedia = daftarKamar.filter(k => k.tersedia).length;
+                const totalPenuh = daftarKamar.length - totalTersedia;
+                badgeTotal.innerHTML = `
+                    <span>Menampilkan ${list.length} Kamar</span>
+                    <span style="margin: 0 4px; color:var(--text-muted);">&bull;</span>
+                    <span style="color:var(--success); font-weight:700;"><i class="fa-solid fa-circle-check"></i> ${totalTersedia} Tersedia</span>
+                    <span style="margin: 0 4px; color:var(--text-muted);">&bull;</span>
+                    <span style="color:var(--danger); font-weight:700;"><i class="fa-solid fa-lock"></i> ${totalPenuh} Penuh</span>
+                `;
+            }
+
+            if (list.length === 0) {
+                wadah.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align:center; padding:50px 20px; background:white; border-radius:16px; border:1px dashed var(--border);">
+                        <i class="fa-solid fa-bed" style="font-size:40px; color:var(--text-muted); margin-bottom:12px;"></i>
+                        <h4 style="color:var(--secondary); font-size:18px;">Tidak Ada Kamar yang Sesuai</h4>
+                        <p style="color:var(--text-muted); font-size:14px; margin-top:4px;">Coba ubah kata kunci pencarian atau setel ulang filter.</p>
+                        <button class="btn btn-outline btn-sm" style="margin-top:14px;" onclick="resetFilter()">Reset Filter</button>
+                    </div>
+                `;
+                return;
+            }
+
+            list.forEach((kamar) => {
+                const kartu = document.createElement('div');
+                kartu.className = 'kartu-kamar';
+
+                // Pisahkan fasilitas jadi chip tags
+                const chipsFasilitas = kamar.fasilitas.split(',').map(f => {
+                    const clean = f.trim();
+                    let icon = 'fa-check';
+                    if (clean.toLowerCase().includes('ac')) icon = 'fa-snowflake';
+                    else if (clean.toLowerCase().includes('wifi')) icon = 'fa-wifi';
+                    else if (clean.toLowerCase().includes('kasur')) icon = 'fa-bed';
+                    else if (clean.toLowerCase().includes('kipas')) icon = 'fa-fan';
+                    else if (clean.toLowerCase().includes('lemari')) icon = 'fa-door-closed';
+                    else if (clean.toLowerCase().includes('listrik')) icon = 'fa-bolt';
+                    else if (clean.toLowerCase().includes('air')) icon = 'fa-droplet';
+                    return `<span class="chip-fasilitas"><i class="fa-solid ${icon}"></i> ${clean}</span>`;
+                }).join('');
+
+                kartu.innerHTML = `
+                    <div class="kamar-gambar-wrapper">
+                        <img src="${kamar.foto}" alt="${kamar.nama}" class="kamar-gambar" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80'">
+                        <div class="badge-status ${kamar.tersedia ? 'badge-tersedia' : 'badge-penuh'}">
+                            ${kamar.tersedia ? '<span class="dot"></span> Tersedia' : '<i class="fa-solid fa-lock"></i> Sudah Dipesan (Penuh)'}
+                        </div>
+                        <div class="badge-tipe">${kamar.tipe || 'Kamar Kos'}</div>
+                    </div>
+                    <div class="kamar-info">
+                        <div class="kamar-header-row">
+                            <h4 class="kamar-nama">${kamar.nama}</h4>
+                            <div class="kamar-rating">
+                                <i class="fa-solid fa-star"></i> ${kamar.rating || '4.8'}
+                            </div>
+                        </div>
+
+                        <div class="kamar-harga-box">
+                            <span class="kamar-harga">Rp ${kamar.harga.toLocaleString('id-ID')}</span>
+                            <span class="kamar-periode">/ bulan</span>
+                        </div>
+
+                        <div class="kamar-fasilitas-chips">
+                            ${chipsFasilitas}
+                        </div>
+
+                        <div class="kamar-card-actions">
+                            <button class="btn btn-outline" onclick="bukaModalDetail(${kamar.id})">
+                                <i class="fa-solid fa-circle-info"></i> Detail
+                            </button>
+                            ${kamar.tersedia
+                        ? `<button class="btn btn-primary" onclick="bukaFormPesanById(${kamar.id})"><i class="fa-solid fa-bolt"></i> Pesan Sekarang</button>`
+                        : `<button class="btn btn-disabled" disabled title="Kamar ini sudah dipesan"><i class="fa-solid fa-ban"></i> Sudah Dipesan</button>`
+                    }
+                        </div>
+                    </div>
+                `;
+                wadah.appendChild(kartu);
+            });
+        }
+
+        // Filter dan Pencarian Cerdas
+        function filterKamar() {
+            const query = (document.getElementById('inputPencarian').value || '').toLowerCase().trim();
+            const hargaFilter = document.getElementById('filterHarga').value;
+            const sort = document.getElementById('sortKamar').value;
+
+            let hasil = daftarKamar.filter(kamar => {
+                // Filter Teks
+                const matchQuery = kamar.nama.toLowerCase().includes(query) ||
+                    kamar.fasilitas.toLowerCase().includes(query) ||
+                    kamar.tipe.toLowerCase().includes(query);
+
+                // Filter Kategori Pill
+                let matchKategori = true;
+                if (kategoriFilterAktif === 'tersedia') matchKategori = kamar.tersedia;
+                else if (kategoriFilterAktif === 'ac') matchKategori = kamar.fasilitas.toLowerCase().includes('ac');
+                else if (kategoriFilterAktif === 'kipas') matchKategori = kamar.fasilitas.toLowerCase().includes('kipas');
+                else if (kategoriFilterAktif === 'wifi') matchKategori = kamar.fasilitas.toLowerCase().includes('wifi');
+
+                // Filter Rentang Harga
+                let matchHarga = true;
+                if (hargaFilter === 'dibawah500') matchHarga = kamar.harga <= 500000;
+                else if (hargaFilter === 'diatas500') matchHarga = kamar.harga > 500000;
+
+                return matchQuery && matchKategori && matchHarga;
+            });
+
+            // Urutkan (Sorting)
+            if (sort === 'termurah') {
+                hasil.sort((a, b) => a.harga - b.harga);
+            } else if (sort === 'termahal') {
+                hasil.sort((a, b) => b.harga - a.harga);
+            }
+
+            renderKamar(hasil);
+        }
+
+        function setKategoriFilter(kat, el) {
+            kategoriFilterAktif = kat;
+            document.querySelectorAll('.tag-pill').forEach(pill => pill.classList.remove('active'));
+            if (el) el.classList.add('active');
+            filterKamar();
+        }
+
+        function resetFilter() {
+            document.getElementById('inputPencarian').value = '';
+            document.getElementById('filterHarga').value = 'semua';
+            document.getElementById('sortKamar').value = 'default';
+            setKategoriFilter('semua', document.querySelector('.tag-pill'));
+        }
+
+        /* ===== SISTEM AUTENTIKASI & PROFIL PENGGUNA ===== */
+        let currentUser = null;
+
+        const DEMO_USERS = [
+            {
+                id: 'USR-101',
+                nama: 'Budi Pratama',
+                noHp: '081234567890',
+                email: 'budi.pratama@gmail.com',
+                password: '123',
+                noKtp: '3271028391820002',
+                pekerjaan: 'Software Engineer',
+                kontakDarurat: 'Bpk. Hendra (081299887766)',
+                avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
+                tglGabung: '12 Januari 2026'
+            },
+            {
+                id: 'USR-102',
+                nama: 'Siti Rahmawati',
+                noHp: '081987654321',
+                email: 'siti.rahma@gmail.com',
+                password: '123',
+                noKtp: '3271028391820003',
+                pekerjaan: 'Mahasiswi Kedokteran',
+                kontakDarurat: 'Ibu Ratna (081388776655)',
+                avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
+                tglGabung: '5 Februari 2026'
+            }
+        ];
+
+        function seedDemoDataIfNeeded() {
+            let users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            if (users.length === 0) {
+                users = DEMO_USERS;
+                localStorage.setItem('mykost_users', JSON.stringify(users));
+            }
+
+            let pesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            const budiOrder = pesanan.find(p => p.noHp === '081234567890');
+            if (!budiOrder) {
+                const sampleOrder = {
+                    id: 'KOS-829104',
+                    userId: 'USR-101',
+                    userPhone: '081234567890',
+                    kamarId: 2,
+                    namaKamar: 'Kamar No. 2 — Standar Meja Kerja',
+                    hargaKamar: 500000,
+                    totalBayar: 500000,
+                    namaPenyewa: 'Budi Pratama',
+                    noHp: '081234567890',
+                    tglMasuk: new Date().toISOString().split('T')[0],
+                    durasi: '1 Bulan',
+                    metodeBayar: 'QRIS',
+                    status: 'Dikonfirmasi',
+                    waktu: new Date().toLocaleString('id-ID')
+                };
+                pesanan.unshift(sampleOrder);
+                localStorage.setItem('pesananKos', JSON.stringify(pesanan));
+            }
+        }
+
+        function initAuth() {
+            seedDemoDataIfNeeded();
+            const stored = localStorage.getItem('mykost_currentUser');
+            if (stored) {
+                try {
+                    currentUser = JSON.parse(stored);
+                } catch (e) {
+                    currentUser = null;
+                }
+            }
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const authArea = document.getElementById('navAuthArea');
+            const heroWelcome = document.getElementById('heroUserWelcome');
+            const heroName = document.getElementById('heroWelcomeName');
+
+            if (!authArea) return;
+
+            if (currentUser) {
+                const firstName = (currentUser.nama || 'User').split(' ')[0];
+                authArea.innerHTML = `
+                    <div class="user-dropdown-wrapper">
+                        <button class="user-pill-btn" onclick="toggleUserDropdown(event)">
+                            <img src="${currentUser.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'}" class="user-avatar-img" alt="${currentUser.nama}">
+                            <span class="user-name-text">${firstName}</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size:10px; color:var(--text-muted); margin-left:2px;"></i>
+                        </button>
+                        <div class="user-dropdown-menu" id="userDropdownMenu">
+                            <div class="user-dropdown-header">
+                                <strong>${currentUser.nama}</strong>
+                                <small>${currentUser.noHp || currentUser.email || '-'}</small>
+                                <span class="user-status-pill"><i class="fa-solid fa-circle-check"></i> Penyewa Aktif</span>
+                            </div>
+                            <a href="javascript:void(0)" onclick="bukaModalProfil('ringkasan')"><i class="fa-solid fa-key" style="color:var(--primary);"></i> Kamar & Smart QR</a>
+                            <a href="javascript:void(0)" onclick="bukaModalProfil('biodata')"><i class="fa-solid fa-user-pen" style="color:#3b82f6;"></i> Profil & Data Diri</a>
+                            <a href="javascript:void(0)" onclick="bukaModalProfil('riwayat')"><i class="fa-solid fa-receipt" style="color:#f59e0b;"></i> Riwayat Sewa</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="javascript:void(0)" onclick="prosesLogout()" style="color:var(--danger);"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar (Logout)</a>
+                        </div>
+                    </div>
+                `;
+
+                if (heroWelcome && heroName) {
+                    heroName.textContent = currentUser.nama;
+                    heroWelcome.style.display = 'inline-flex';
+                }
+            } else {
+                authArea.innerHTML = `
+                    <button class="btn btn-primary btn-sm" onclick="bukaModalAuth('masuk')">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk / Daftar
+                    </button>
+                `;
+                if (heroWelcome) {
+                    heroWelcome.style.display = 'none';
+                }
+            }
+        }
+
+        function toggleUserDropdown(event) {
+            if (event) event.stopPropagation();
+            const menu = document.getElementById('userDropdownMenu');
+            if (menu) menu.classList.toggle('active');
+        }
+
+        window.addEventListener('click', () => {
+            const menu = document.getElementById('userDropdownMenu');
+            if (menu) menu.classList.remove('active');
+        });
+
+        function bukaModalAuth(tab = 'masuk') {
+            document.getElementById('modalAuth').classList.add('active');
+            gantiTabAuth(tab);
+        }
+
+        function tutupModalAuth() {
+            document.getElementById('modalAuth').classList.remove('active');
+        }
+
+        function gantiTabAuth(tab) {
+            const btnMasuk = document.getElementById('tabBtnMasuk');
+            const btnDaftar = document.getElementById('tabBtnDaftar');
+            const areaMasuk = document.getElementById('formMasukArea');
+            const areaDaftar = document.getElementById('formDaftarArea');
+            const judul = document.getElementById('judulModalAuth');
+
+            if (tab === 'masuk') {
+                btnMasuk.classList.add('active');
+                btnDaftar.classList.remove('active');
+                areaMasuk.style.display = 'block';
+                areaDaftar.style.display = 'none';
+                judul.innerHTML = '<i class="fa-solid fa-right-to-bracket" style="color:var(--primary);"></i> Masuk ke Akun';
+            } else {
+                btnDaftar.classList.add('active');
+                btnMasuk.classList.remove('active');
+                areaDaftar.style.display = 'block';
+                areaMasuk.style.display = 'none';
+                judul.innerHTML = '<i class="fa-solid fa-user-plus" style="color:var(--primary);"></i> Daftar Akun Baru';
+            }
+        }
+
+        function toggleShowPassword(inputId, btnEl) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            if (input.type === 'password') {
+                input.type = 'text';
+                btnEl.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
+            } else {
+                input.type = 'password';
+                btnEl.innerHTML = '<i class="fa-regular fa-eye"></i>';
+            }
+        }
+
+        function prosesLogin() {
+            const identifier = (document.getElementById('loginIdentifier').value || '').trim();
+            const password = (document.getElementById('loginPassword').value || '').trim();
+
+            if (!identifier) {
+                tampilToast('⚠️ Masukkan No. WhatsApp atau Email Anda!', 'warning');
+                document.getElementById('loginIdentifier').focus();
+                return;
+            }
+            if (!password) {
+                tampilToast('⚠️ Masukkan kata sandi!', 'warning');
+                document.getElementById('loginPassword').focus();
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            const user = users.find(u =>
+                (u.noHp === identifier || (u.email && u.email.toLowerCase() === identifier.toLowerCase())) &&
+                u.password === password
+            );
+
+            if (!user) {
+                tampilToast('❌ No. HP / Email atau kata sandi tidak cocok!', 'error');
+                return;
+            }
+
+            currentUser = user;
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+            tutupModalAuth();
+            updateAuthUI();
+            tampilToast(`👋 Selamat datang kembali, ${user.nama}!`, 'success');
+        }
+
+        function masukDemoUser(idx = 0) {
+            const users = JSON.parse(localStorage.getItem('mykost_users') || JSON.stringify(DEMO_USERS));
+            const user = users[idx] || DEMO_USERS[0];
+            currentUser = user;
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+            tutupModalAuth();
+            updateAuthUI();
+            tampilToast(`✅ Berhasil masuk sebagai ${user.nama} (Demo)!`, 'success');
+        }
+
+        function prosesDaftar() {
+            const nama = (document.getElementById('regNama').value || '').trim();
+            const noHp = (document.getElementById('regHp').value || '').trim();
+            const email = (document.getElementById('regEmail').value || '').trim();
+            const password = (document.getElementById('regPassword').value || '').trim();
+            const pekerjaan = (document.getElementById('regPekerjaan').value || '').trim();
+
+            if (!nama) {
+                tampilToast('⚠️ Mohon isi nama lengkap sesuai KTP!', 'warning');
+                document.getElementById('regNama').focus();
+                return;
+            }
+            if (!noHp || noHp.length < 9) {
+                tampilToast('⚠️ Masukkan nomor WhatsApp yang valid!', 'warning');
+                document.getElementById('regHp').focus();
+                return;
+            }
+            if (!password || password.length < 3) {
+                tampilToast('⚠️ Kata sandi minimal 3 karakter!', 'warning');
+                document.getElementById('regPassword').focus();
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            const existing = users.find(u => u.noHp === noHp);
+            if (existing) {
+                tampilToast('⚠️ Nomor WhatsApp ini sudah terdaftar. Silakan langsung masuk!', 'warning');
+                gantiTabAuth('masuk');
+                document.getElementById('loginIdentifier').value = noHp;
+                return;
+            }
+
+            const newUser = {
+                id: 'USR-' + Math.floor(100 + Math.random() * 900),
+                nama: nama,
+                noHp: noHp,
+                email: email || `${nama.toLowerCase().replace(/[^a-z]/g, '')}@gmail.com`,
+                password: password,
+                noKtp: '',
+                pekerjaan: pekerjaan || 'Penyewa Kos',
+                kontakDarurat: '',
+                avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
+                tglGabung: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })
+            };
+
+            users.push(newUser);
+            localStorage.setItem('mykost_users', JSON.stringify(users));
+
+            currentUser = newUser;
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+
+            tutupModalAuth();
+            updateAuthUI();
+            tampilToast(`🎉 Akun berhasil dibuat! Selamat datang di MY KOST PUDEW, ${nama}!`, 'success');
+        }
+
+        function prosesLogout() {
+            currentUser = null;
+            localStorage.removeItem('mykost_currentUser');
+            const menu = document.getElementById('userDropdownMenu');
+            if (menu) menu.classList.remove('active');
+            tutupModalProfil();
+            updateAuthUI();
+            tampilToast('👋 Anda telah keluar dari akun.', 'info');
+        }
+
+        function bukaModalProfil(tab = 'ringkasan') {
+            if (!currentUser) {
+                bukaModalAuth('masuk');
+                return;
+            }
+
+            const menu = document.getElementById('userDropdownMenu');
+            if (menu) menu.classList.remove('active');
+
+            document.getElementById('profilFotoUtama').src = currentUser.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80';
+            document.getElementById('profilNamaLengkap').textContent = currentUser.nama;
+            document.getElementById('profilNoHp').textContent = currentUser.noHp || '-';
+            document.getElementById('profilEmail').textContent = currentUser.email || '-';
+            document.getElementById('profilTglGabung').textContent = currentUser.tglGabung || '2026';
+
+            document.getElementById('editNama').value = currentUser.nama || '';
+            document.getElementById('editHp').value = currentUser.noHp || '';
+            document.getElementById('editEmail').value = currentUser.email || '';
+            document.getElementById('editKtp').value = currentUser.noKtp || '';
+            document.getElementById('editPekerjaan').value = currentUser.pekerjaan || '';
+            document.getElementById('editKontakDarurat').value = currentUser.kontakDarurat || '';
+
+            renderKamarAktifUser();
+            renderRiwayatUser();
+
+            gantiTabProfil(tab);
+            document.getElementById('modalProfil').classList.add('active');
+        }
+
+        function tutupModalProfil() {
+            document.getElementById('modalProfil').classList.remove('active');
+        }
+
+        function gantiTabProfil(tab) {
+            const tabs = ['ptabKamar', 'ptabBiodata', 'ptabRiwayat', 'ptabKeamanan'];
+            const contents = ['tabKontenKamar', 'tabKontenBiodata', 'tabKontenRiwayat', 'tabKontenKeamanan'];
+
+            tabs.forEach(t => {
+                const el = document.getElementById(t);
+                if (el) el.classList.remove('active');
+            });
+            contents.forEach(c => {
+                const el = document.getElementById(c);
+                if (el) el.style.display = 'none';
+            });
+
+            if (tab === 'ringkasan') {
+                document.getElementById('ptabKamar').classList.add('active');
+                document.getElementById('tabKontenKamar').style.display = 'block';
+            } else if (tab === 'biodata') {
+                document.getElementById('ptabBiodata').classList.add('active');
+                document.getElementById('tabKontenBiodata').style.display = 'block';
+            } else if (tab === 'riwayat') {
+                document.getElementById('ptabRiwayat').classList.add('active');
+                document.getElementById('tabKontenRiwayat').style.display = 'block';
+            } else if (tab === 'keamanan') {
+                document.getElementById('ptabKeamanan').classList.add('active');
+                document.getElementById('tabKontenKeamanan').style.display = 'block';
+            }
+        }
+
+        function simpanProfil() {
+            if (!currentUser) return;
+            const nama = document.getElementById('editNama').value.trim();
+            const hp = document.getElementById('editHp').value.trim();
+            const email = document.getElementById('editEmail').value.trim();
+            const ktp = document.getElementById('editKtp').value.trim();
+            const pekerjaan = document.getElementById('editPekerjaan').value.trim();
+            const darurat = document.getElementById('editKontakDarurat').value.trim();
+
+            if (!nama || !hp) {
+                tampilToast('⚠️ Nama dan No. WhatsApp tidak boleh kosong!', 'warning');
+                return;
+            }
+
+            currentUser.nama = nama;
+            currentUser.noHp = hp;
+            currentUser.email = email;
+            currentUser.noKtp = ktp;
+            currentUser.pekerjaan = pekerjaan;
+            currentUser.kontakDarurat = darurat;
+
+            let users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            const idx = users.findIndex(u => u.id === currentUser.id);
+            if (idx !== -1) {
+                users[idx] = currentUser;
+            } else {
+                users.push(currentUser);
+            }
+            localStorage.setItem('mykost_users', JSON.stringify(users));
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+
+            document.getElementById('profilNamaLengkap').textContent = currentUser.nama;
+            document.getElementById('profilNoHp').textContent = currentUser.noHp;
+            document.getElementById('profilEmail').textContent = currentUser.email;
+            updateAuthUI();
+            tampilToast('✅ Perubahan profil berhasil disimpan!', 'success');
+        }
+
+        function gantiKataSandi() {
+            if (!currentUser) return;
+            const oldP = document.getElementById('oldPassword').value.trim();
+            const newP = document.getElementById('newPassword').value.trim();
+
+            if (oldP !== currentUser.password) {
+                tampilToast('❌ Kata sandi saat ini tidak cocok!', 'error');
+                return;
+            }
+            if (!newP || newP.length < 3) {
+                tampilToast('⚠️ Kata sandi baru minimal 3 karakter!', 'warning');
+                return;
+            }
+
+            currentUser.password = newP;
+            let users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            const idx = users.findIndex(u => u.id === currentUser.id);
+            if (idx !== -1) users[idx].password = newP;
+            localStorage.setItem('mykost_users', JSON.stringify(users));
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+
+            document.getElementById('oldPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            tampilToast('🔒 Kata sandi berhasil diperbarui!', 'success');
+        }
+
+        function renderKamarAktifUser() {
+            const wadah = document.getElementById('areaKamarAktifUser');
+            if (!currentUser) return;
+
+            const semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            const pesananAktif = semuaPesanan.find(p =>
+                (p.noHp === currentUser.noHp || p.userId === currentUser.id || (p.namaPenyewa && p.namaPenyewa.toLowerCase() === currentUser.nama.toLowerCase()))
+            );
+
+            if (!pesananAktif) {
+                wadah.innerHTML = `
+                    <div style="text-align:center; padding:30px 16px; background:#f8fafc; border-radius:12px; border:1px dashed var(--border);">
+                        <i class="fa-solid fa-door-open" style="font-size:36px; color:var(--text-muted); margin-bottom:10px;"></i>
+                        <h4 style="font-size:16px; color:var(--secondary); margin-bottom:4px;">Belum Ada Kamar Aktif</h4>
+                        <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">Anda belum memiliki pemesanan kamar aktif saat ini.</p>
+                        <button class="btn btn-primary btn-sm" onclick="tutupModalProfil(); location.href='#daftarKamarSection';">
+                            <i class="fa-solid fa-magnifying-glass"></i> Cari & Pesan Kamar Sekarang
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            wadah.innerHTML = `
+                <div class="active-room-card">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+                        <div>
+                            <span class="user-status-pill"><i class="fa-solid fa-check"></i> Kamar Disewa</span>
+                            <h4 style="font-size:18px; font-weight:800; color:var(--secondary); margin-top:4px;">${pesananAktif.namaKamar}</h4>
+                            <div style="font-size:12px; color:var(--text-muted);">ID Booking: <strong>${pesananAktif.id}</strong></div>
+                        </div>
+                        <div style="text-align:right;">
+                            <span style="font-size:16px; font-weight:800; color:var(--primary);">Rp ${(pesananAktif.totalBayar || pesananAktif.hargaKamar || 500000).toLocaleString('id-ID')}</span>
+                            <div style="font-size:11px; color:var(--text-muted);">${pesananAktif.durasi || '1 Bulan'}</div>
+                        </div>
+                    </div>
+
+                    <div style="background:#f8fafc; border:1.5px dashed var(--primary); border-radius:12px; padding:16px; text-align:center; margin:14px 0;">
+                        <div style="font-size:12.5px; font-weight:700; color:var(--secondary); margin-bottom:8px;">
+                            <i class="fa-solid fa-qrcode" style="color:var(--primary);"></i> SMART QR DOOR LOCK
+                        </div>
+                        <div id="kotakQRProfil" style="margin: 0 auto; display:inline-block;"></div>
+                        <div style="font-size:11.5px; color:var(--text-muted); margin-top:8px;">
+                            Dekatkan kode QR ini ke pemindai pintu untuk membuka kunci otomatis.
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;">
+                        <button class="btn btn-outline btn-sm" onclick="bukaTiketDitemukan('${pesananAktif.id}')">
+                            <i class="fa-solid fa-print"></i> Cetak Tiket
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="window.open('https://wa.me/6285900000000?text=Halo%20Pengelola%20MY%20KOST%20PUDEW,%20saya%20penghuni%20${encodeURIComponent(pesananAktif.namaKamar)}%20(ID:%20${pesananAktif.id})', '_blank')">
+                            <i class="fa-brands fa-whatsapp"></i> Hubungi Pemilik
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                const target = document.getElementById('kotakQRProfil');
+                if (target) {
+                    target.innerHTML = '';
+                    const qrData = `MYKOST|KODE:${pesananAktif.id}|KAMAR:${pesananAktif.namaKamar}|NAMA:${pesananAktif.namaPenyewa}|TGL:${pesananAktif.tglMasuk}|EXP:2027`;
+                    QRCode.toCanvas(qrData, {
+                        width: 170,
+                        margin: 2,
+                        color: { dark: '#0f172a', light: '#ffffff' }
+                    }, (err, canvas) => {
+                        if (!err && canvas) {
+                            canvas.style.borderRadius = '8px';
+                            target.appendChild(canvas);
+                        }
+                    });
+                }
+            }, 60);
+        }
+
+        function renderRiwayatUser() {
+            const wadah = document.getElementById('daftarRiwayatUser');
+            if (!currentUser) return;
+
+            const semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            const riwayat = semuaPesanan.filter(p =>
+                (p.noHp === currentUser.noHp || p.userId === currentUser.id || (p.namaPenyewa && p.namaPenyewa.toLowerCase() === currentUser.nama.toLowerCase()))
+            );
+
+            if (riwayat.length === 0) {
+                wadah.innerHTML = `
+                    <div style="text-align:center; padding:30px 16px; color:var(--text-muted); font-size:13px;">
+                        <i class="fa-solid fa-receipt" style="font-size:32px; display:block; margin-bottom:8px;"></i>
+                        Belum ada riwayat transaksi.
+                    </div>
+                `;
+                return;
+            }
+
+            wadah.innerHTML = '';
+            riwayat.forEach(item => {
+                const div = document.createElement('div');
+                div.style.cssText = 'background:#f8fafc; border:1px solid var(--border); border-radius:10px; padding:12px 14px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;';
+                div.innerHTML = `
+                    <div>
+                        <strong style="font-size:14px; color:var(--secondary);">${item.namaKamar}</strong>
+                        <div style="font-size:12px; color:var(--text-muted);">${item.id} • ${item.tglMasuk} (${item.durasi || '1 Bulan'})</div>
+                        <span class="user-status-pill" style="font-size:10.5px; padding:2px 6px;">${item.status || 'Dikonfirmasi'}</span>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-weight:700; color:var(--primary); font-size:13.5px;">Rp ${(item.totalBayar || item.hargaKamar || 0).toLocaleString('id-ID')}</div>
+                        <button class="btn btn-outline btn-sm" style="margin-top:4px;" onclick="bukaTiketDitemukan('${item.id}')">
+                            <i class="fa-solid fa-qrcode"></i> QR
+                        </button>
+                    </div>
+                `;
+                wadah.appendChild(div);
+            });
+        }
+
+        function bukaModalPilihAvatar() {
+            document.getElementById('modalPilihAvatar').classList.add('active');
+        }
+
+        function tutupModalPilihAvatar() {
+            document.getElementById('modalPilihAvatar').classList.remove('active');
+        }
+
+        function pilihAvatar(url) {
+            if (!currentUser) return;
+            currentUser.avatar = url;
+            simpanAvatarCurrentUser();
+            tutupModalPilihAvatar();
+        }
+
+        function simpanCustomAvatarUrl() {
+            const url = document.getElementById('customAvatarUrl').value.trim();
+            if (!url) {
+                tampilToast('⚠️ Masukkan URL foto!', 'warning');
+                return;
+            }
+            if (!currentUser) return;
+            currentUser.avatar = url;
+            simpanAvatarCurrentUser();
+            tutupModalPilihAvatar();
+        }
+
+        function simpanAvatarCurrentUser() {
+            let users = JSON.parse(localStorage.getItem('mykost_users') || '[]');
+            const idx = users.findIndex(u => u.id === currentUser.id);
+            if (idx !== -1) users[idx].avatar = currentUser.avatar;
+            localStorage.setItem('mykost_users', JSON.stringify(users));
+            localStorage.setItem('mykost_currentUser', JSON.stringify(currentUser));
+
+            document.getElementById('profilFotoUtama').src = currentUser.avatar;
+            updateAuthUI();
+            tampilToast('✨ Foto profil berhasil diperbarui!', 'success');
+        }
+
+        // Buka Modal Pesan
+        function bukaFormPesanById(id) {
+            const k = daftarKamar.find(item => item.id === id);
+            if (!k) return;
+            if (!k.tersedia) {
+                tampilToast(`⚠️ Maaf, ${k.nama} sudah penuh / terisi dan tidak dapat dipesan lagi.`, 'warning');
+                return;
+            }
+            kamarDipilih = k;
+
+            document.getElementById('judulModal').innerHTML = `<i class="fa-solid fa-calendar-check" style="color:var(--primary);"></i> Pesan — ${kamarDipilih.nama}`;
+            document.getElementById('ringkasanKamar').textContent = kamarDipilih.nama;
+            document.getElementById('ringkasanTarif').textContent = `Rp ${kamarDipilih.harga.toLocaleString('id-ID')} / bulan`;
+
+            const modal = document.getElementById('modalPesan');
+            modal.classList.add('active');
+            document.getElementById('bagianForm').style.display = 'block';
+            document.getElementById('bagianSukses').classList.remove('tampil');
+
+            const hariIni = new Date().toISOString().split('T')[0];
+            const tglInput = document.getElementById('tglMasuk');
+            tglInput.min = hariIni;
+            if (!tglInput.value) tglInput.value = hariIni;
+
+            // Auto-fill dari profil pengguna jika sudah login
+            if (currentUser) {
+                document.getElementById('namaPenyewa').value = currentUser.nama || '';
+                document.getElementById('noHp').value = currentUser.noHp || '';
+            }
+
+            metodeBayar = '';
+            document.querySelectorAll('.opsi-bayar').forEach(el => el.classList.remove('terpilih'));
+            document.querySelectorAll('.info-bayar').forEach(el => el.classList.remove('tampil'));
+
+            hitungTotalBayar();
+        }
+
+        function hitungTotalBayar() {
+            if (!kamarDipilih) return;
+            const durasi = document.getElementById('durasi').value;
+            let pengali = 1;
+            let diskon = 0; // dalam persen
+
+            if (durasi === 'bulan') pengali = 1;
+            else if (durasi === '3bulan') { pengali = 3; diskon = 0.05; }
+            else if (durasi === '6bulan') { pengali = 6; diskon = 0.10; }
+            else if (durasi === 'tahun') { pengali = 12; diskon = 0.15; }
+
+            const hargaTotalNormal = kamarDipilih.harga * pengali;
+            const nominalDiskon = Math.round(hargaTotalNormal * diskon);
+            const totalBayar = hargaTotalNormal - nominalDiskon;
+
+            const rowDiskon = document.getElementById('rowDiskon');
+            if (diskon > 0) {
+                rowDiskon.style.display = 'flex';
+                document.getElementById('ringkasanDiskon').textContent = `- Rp ${nominalDiskon.toLocaleString('id-ID')} (${diskon * 100}%)`;
+            } else {
+                rowDiskon.style.display = 'none';
+            }
+
+            document.getElementById('ringkasanTotal').textContent = `Rp ${totalBayar.toLocaleString('id-ID')}`;
+            return totalBayar;
+        }
+
+        function pilihBayar(el) {
+            document.querySelectorAll('.opsi-bayar').forEach(e => e.classList.remove('terpilih'));
+            document.querySelectorAll('.info-bayar').forEach(e => e.classList.remove('tampil'));
+            el.classList.add('terpilih');
+            metodeBayar = el.dataset.bayar;
+            const infoEl = document.getElementById('info' + metodeBayar);
+            if (infoEl) infoEl.classList.add('tampil');
+        }
+
+        function tutupModal() {
+            document.getElementById('modalPesan').classList.remove('active');
+            document.getElementById('namaPenyewa').value = '';
+            document.getElementById('noHp').value = '';
+            metodeBayar = '';
+            document.querySelectorAll('.opsi-bayar').forEach(e => e.classList.remove('terpilih'));
+            document.querySelectorAll('.info-bayar').forEach(e => e.classList.remove('tampil'));
+        }
+
+        // Modal Detail Kamar
+        let detailKamarAktif = null;
+        function bukaModalDetail(id) {
+            const k = daftarKamar.find(item => item.id === id);
+            if (!k) return;
+            detailKamarAktif = k;
+
+            document.getElementById('detailFotoKamar').src = k.foto;
+            document.getElementById('detailNamaKamar').textContent = k.nama;
+            document.getElementById('detailHargaKamar').textContent = `Rp ${k.harga.toLocaleString('id-ID')}`;
+
+            const badgeStatus = document.getElementById('detailStatusBadge');
+            if (k.tersedia) {
+                badgeStatus.className = 'badge-tersedia';
+                badgeStatus.innerHTML = '<span class="dot"></span> Kamar Tersedia';
+                document.getElementById('btnDetailPesan').classList.remove('btn-disabled');
+                document.getElementById('btnDetailPesan').disabled = false;
+            } else {
+                badgeStatus.className = 'badge-penuh';
+                badgeStatus.innerHTML = '<i class="fa-solid fa-lock"></i> Sudah Terisi (Penuh)';
+                document.getElementById('btnDetailPesan').classList.add('btn-disabled');
+                document.getElementById('btnDetailPesan').disabled = true;
+            }
+
+            const gridFasilitas = document.getElementById('detailFasilitasGrid');
+            gridFasilitas.innerHTML = '';
+            (k.fitur || k.fasilitas.split(',')).forEach(item => {
+                const spec = document.createElement('div');
+                spec.className = 'spec-item';
+                spec.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${typeof item === 'string' ? item.trim() : item}</span>`;
+                gridFasilitas.appendChild(spec);
+            });
+
+            document.getElementById('modalDetailKamar').classList.add('active');
+        }
+
+        function tutupModalDetail() {
+            document.getElementById('modalDetailKamar').classList.remove('active');
+        }
+
+        function pesanDariDetail() {
+            if (!detailKamarAktif || !detailKamarAktif.tersedia) {
+                tampilToast('⚠️ Kamar ini sudah terisi penuh dan tidak dapat dipesan!', 'warning');
+                return;
+            }
+            tutupModalDetail();
+            bukaFormPesanById(detailKamarAktif.id);
+        }
+
+        // Buat QR Code Smart Lock yang Elegan
+        function buatQRCode(pesanan) {
+            const qrData = `MYKOST|KODE:${pesanan.id}|KAMAR:${pesanan.namaKamar}|NAMA:${pesanan.namaPenyewa}|TGL:${pesanan.tglMasuk}|EXP:2027`;
+            const kotakQR = document.getElementById('kotakQR');
+            kotakQR.innerHTML = '';
+
+            QRCode.toCanvas(qrData, {
+                width: 200,
+                margin: 2,
+                color: {
+                    dark: '#0f172a',
+                    light: '#ffffff'
+                }
+            }, function (error, canvas) {
+                if (error) {
+                    kotakQR.innerHTML = `<p style="color:red; font-size:13px;">Gagal menghasilkan kode QR</p><small>Kode: ${pesanan.id}</small>`;
+                    return;
+                }
+                canvas.style.display = 'block';
+                canvas.style.margin = '0 auto';
+                kotakQR.appendChild(canvas);
+            });
+
+            document.getElementById('qrKodeBooking').textContent = pesanan.id;
+            document.getElementById('qrKamar').textContent = pesanan.namaKamar;
+            document.getElementById('qrTanggal').textContent = pesanan.tglMasuk;
+        }
+
+        // Kirim & Simpan Pemesanan
+        function kirimPesanan() {
+            const nama = document.getElementById('namaPenyewa').value.trim();
+            const noHp = document.getElementById('noHp').value.trim();
+            const tglMasuk = document.getElementById('tglMasuk').value;
+            const durasi = document.getElementById('durasi').value;
+
+            if (!nama) {
+                tampilToast('⚠️ Mohon masukkan nama lengkap penyewa!', 'warning');
+                document.getElementById('namaPenyewa').focus();
+                return;
+            }
+            if (!noHp || noHp.length < 9) {
+                tampilToast('⚠️ Mohon masukkan nomor WhatsApp yang valid!', 'warning');
+                document.getElementById('noHp').focus();
+                return;
+            }
+            if (!tglMasuk) {
+                tampilToast('⚠️ Tentukan tanggal masuk kos!', 'warning');
+                return;
+            }
+            if (!metodeBayar) {
+                tampilToast('⚠️ Pilih salah satu metode pembayaran!', 'warning');
+                return;
+            }
+
+            const totalTagihan = hitungTotalBayar();
+
+            const pesanan = {
+                id: 'KOS-' + Math.floor(100000 + Math.random() * 900000),
+                userId: currentUser ? currentUser.id : null,
+                userPhone: currentUser ? currentUser.noHp : noHp,
+                kamarId: kamarDipilih.id,
+                namaKamar: kamarDipilih.nama,
+                hargaKamar: kamarDipilih.harga,
+                totalBayar: totalTagihan,
+                namaPenyewa: nama,
+                noHp: noHp,
+                tglMasuk: tglMasuk,
+                durasi: durasi,
+                metodeBayar: metodeBayar,
+                status: 'Menunggu Konfirmasi',
+                waktu: new Date().toLocaleString('id-ID')
+            };
+
+            pesananSaatIni = pesanan;
+
+            // Simpan ke localStorage
+            let semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            semuaPesanan.unshift(pesanan);
+            localStorage.setItem('pesananKos', JSON.stringify(semuaPesanan));
+
+            // Otomatis sinkronisasi status ketersediaan kamar
+            sinkronisasiStatusKamar();
+            filterKamar();
+
+            // Tampilkan tiket sukses
+            document.getElementById('bagianForm').style.display = 'none';
+            document.getElementById('bagianSukses').classList.add('tampil');
+            document.getElementById('namaSukses').textContent = nama;
+            document.getElementById('bayarSukses').textContent = metodeBayar;
+
+            buatQRCode(pesanan);
+            tampilToast('✅ Pemesanan berhasil! Status kamar otomatis menjadi PENUH.', 'success');
+        }
+
+        // Kirim Bukti ke WhatsApp Pengelola
+        function kirimKonfirmasiWA() {
+            if (!pesananSaatIni) return;
+            const pesan = `Halo Pengelola MY KOST PUDEW, saya ingin konfirmasi pemesanan kamar:%0A%0A` +
+                `*Kode Booking:* ${pesananSaatIni.id}%0A` +
+                `*Nama Penyewa:* ${pesananSaatIni.namaPenyewa}%0A` +
+                `*Nomor Kamar:* ${pesananSaatIni.namaKamar}%0A` +
+                `*Tanggal Masuk:* ${pesananSaatIni.tglMasuk}%0A` +
+                `*Durasi Sewa:* ${pesananSaatIni.durasi}%0A` +
+                `*Total Tagihan:* Rp ${pesananSaatIni.totalBayar ? pesananSaatIni.totalBayar.toLocaleString('id-ID') : '-'}%0A` +
+                `*Metode Pembayaran:* ${pesananSaatIni.metodeBayar}%0A%0A` +
+                `Mohon dikonfirmasi ya. Terima kasih!`;
+            window.open(`https://wa.me/6285900000000?text=${pesan}`, '_blank');
+        }
+
+        function salinKodeBooking() {
+            if (!pesananSaatIni) return;
+            salinTeks(pesananSaatIni.id, 'Kode Booking');
+        }
+
+        // Salin Teks ke Clipboard dengan Toast
+        function salinTeks(teks, label) {
+            navigator.clipboard.writeText(teks).then(() => {
+                tampilToast(`📋 ${label} berhasil disalin ke clipboard!`, 'success');
+            }).catch(() => {
+                tampilToast(`Gagal menyalin ${label}`, 'error');
+            });
+        }
+
+        // Toast Notification System
+        function tampilToast(pesan, jenis = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${jenis}`;
+
+            let icon = 'fa-info-circle';
+            if (jenis === 'success') icon = 'fa-circle-check';
+            if (jenis === 'warning') icon = 'fa-triangle-exclamation';
+            if (jenis === 'error') icon = 'fa-circle-xmark';
+
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${pesan}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('tampil'), 10);
+            setTimeout(() => {
+                toast.classList.remove('tampil');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // Modal Cek Tiket
+        function bukaModalCekTiket() {
+            document.getElementById('modalCekTiket').classList.add('active');
+            document.getElementById('inputCariTiket').value = '';
+            document.getElementById('hasilPencarianTiket').innerHTML = '';
+        }
+
+        function tutupModalCekTiket() {
+            document.getElementById('modalCekTiket').classList.remove('active');
+        }
+
+        function cariTiketSaya() {
+            const keyword = document.getElementById('inputCariTiket').value.trim().toLowerCase();
+            const hasilWadah = document.getElementById('hasilPencarianTiket');
+            if (!keyword) {
+                tampilToast('⚠️ Masukkan No. HP atau Kode Booking!', 'warning');
+                return;
+            }
+
+            const semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            const ditemukan = semuaPesanan.filter(p =>
+                (p.noHp && p.noHp.includes(keyword)) ||
+                (p.id && p.id.toLowerCase().includes(keyword)) ||
+                (p.namaPenyewa && p.namaPenyewa.toLowerCase().includes(keyword))
+            );
+
+            if (ditemukan.length === 0) {
+                hasilWadah.innerHTML = `
+                    <div style="background:#fee2e2; color:#991b1b; padding:12px; border-radius:8px; font-size:13px; text-align:center;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Tidak ditemukan tiket pemesanan dengan data tersebut.
+                    </div>
+                `;
+                return;
+            }
+
+            hasilWadah.innerHTML = `
+                <h5 style="font-size:13px; font-weight:700; color:var(--secondary); margin-bottom:10px;">Ditemukan ${ditemukan.length} Tiket:</h5>
+            `;
+
+            ditemukan.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.style.cssText = 'background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:12px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;';
+                itemDiv.innerHTML = `
+                    <div>
+                        <strong style="font-size:14px; color:var(--secondary);">${item.namaKamar}</strong>
+                        <div style="font-size:12px; color:var(--text-muted);">${item.id} — An. ${item.namaPenyewa}</div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="bukaTiketDitemukan('${item.id}')">
+                        <i class="fa-solid fa-qrcode"></i> Buka QR
+                    </button>
+                `;
+                hasilWadah.appendChild(itemDiv);
+            });
+        }
+
+        function bukaTiketDitemukan(kodeId) {
+            const semuaPesanan = JSON.parse(localStorage.getItem('pesananKos') || '[]');
+            const pesanan = semuaPesanan.find(p => p.id === kodeId);
+            if (!pesanan) return;
+
+            tutupModalCekTiket();
+            pesananSaatIni = pesanan;
+
+            document.getElementById('modalPesan').classList.add('active');
+            document.getElementById('bagianForm').style.display = 'none';
+            document.getElementById('bagianSukses').classList.add('tampil');
+            document.getElementById('namaSukses').textContent = pesanan.namaPenyewa;
+            document.getElementById('bayarSukses').textContent = pesanan.metodeBayar;
+
+            buatQRCode(pesanan);
+        }
+
+        // Inisialisasi awal saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            initAuth();
+            sinkronisasiStatusKamar();
+            filterKamar();
+        });
+
+        // Sinkronisasi otomatis real-time antar tab/jendela
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'pesananKos' || e.key === 'kamarKosCustom' || e.key === 'kamarManualOverrides') {
+                sinkronisasiStatusKamar();
+                filterKamar();
+                if (currentUser) {
+                    renderKamarAktifUser();
+                    renderRiwayatUser();
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
